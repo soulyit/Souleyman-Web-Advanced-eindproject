@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111a11;
+  color: #e0e0e0;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #0a1a0a;
+  border-bottom: 1px solid #2d6a2d;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  height: 58px;
+  gap: 0;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.nav-link {
+  font-size: 14px;
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  display: inline-block;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #4caf50;
+  border-bottom-color: #4caf50;
+}
+
+/* ZOEKBALK */
+.search-wrap {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #2d6a2d;
+  border-radius: 6px;
+  padding: 5px 10px;
+  background: transparent;
+}
+
+.search-wrap i {
+  font-size: 14px;
+  color: #4caf50;
+}
+
+.search-wrap input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: #e0e0e0;
+  width: 150px;
+}
+
+.search-wrap input::placeholder {
+  color: #5a7a5a;
+}
+
+/* CONTENT */
+.content {
+  padding: 28px;
+  min-height: calc(100vh - 58px);
+}
+
+.tip {
+  font-size: 14px;
+  color: #5a7a5a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tip i {
+  color: #4caf50;
+  font-size: 16px;
+}
