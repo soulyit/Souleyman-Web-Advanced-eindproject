@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>souleyman-eindproject</title>
+    <title>Gebieden -FoodMax</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="gebieden.css">
   </head>
   <body>
 
-     <nav class="navbar">
+    <nav class="navbar">
     <div class="logo">FoodMax</div>
 
     <ul class="nav-links">
@@ -23,14 +24,26 @@
       <i class="ti ti-search"></i>
       <input type="text" name="q" placeholder="Zoek recept...">
     </form>
-  </nav>
+    </nav>
 
-  <footer class="footer">
+
+    <div class="page-header">
+    <h1 class="page-title">Koken per gebied</h1>
+    <p class="page-sub">Kies een land en ontdek de recepten.</p>
+    </div>
+
+    <div class="area-buttons" id="area-buttons">
+    </div>
+
+    <div class="results" id="results">
+    <p class="placeholder">Kies een gebied hierboven.</p>
+    </div>
+
+    <footer class="footer">
     <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
-  </footer>
-
+    </footer>
 
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="gebieden.mjs"></script>
   </body>
 </html>
