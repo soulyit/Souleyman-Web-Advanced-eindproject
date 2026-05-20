@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites -FoodMax</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="favorites.css">
   </head>
   <body>
 
@@ -25,12 +26,21 @@
     </form>
   </nav>
 
+    <div class="page-header">
+    <h1 class="page-title">Favorieten</h1>
+    <p class="page-sub">Klik op ❤️ bij een gerecht om het op te slaan.</p>
+  </div>
+
+  <div id="inhoud">
+    <div class="loader"><div class="spin"></div> Laden...</div>
+  </div>
+
   <footer class="footer">
     <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
   </footer>
 
 
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="favorites.mjs"></script>
   </body>
 </html>
