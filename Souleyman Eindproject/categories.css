@@ -255,3 +255,19 @@
   color: #4caf50;
   text-decoration: none;
 }
+
+.meal-card-body {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}

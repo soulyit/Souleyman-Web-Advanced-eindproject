@@ -218,3 +218,19 @@
 }
 
 .yt-link:hover { background: #1a3a1a; }
+
+.meal-card-body {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}

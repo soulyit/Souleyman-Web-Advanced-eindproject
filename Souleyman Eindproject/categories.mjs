@@ -1,10 +1,26 @@
 const API = 'https://www.themealdb.com/api/json/v1/1/';
+let favorieten = JSON.parse(localStorage.getItem('foodmax_favorieten') || '[]');
+
+function isFavoriet(id) {
+  return favorieten.some(f => f.id === id);
+}
+
+function toggleFavoriet(id, naam, thumb, event) {
+  event.stopPropagation();
+  if (isFavoriet(id)) {
+    favorieten = favorieten.filter(f => f.id !== id);
+  } else {
+    favorieten.push({ id, naam, thumb });
+  }
+  localStorage.setItem('foodmax_favorieten', JSON.stringify(favorieten));
+  const btn = document.getElementById('fav-' + id);
+  if (btn) btn.textContent = isFavoriet(id) ? '❤️' : '🤍';
+}
 
 async function laadCategorieën() {
   document.getElementById('inhoud').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
   const r = await fetch(API + 'categories.php');
   const d = await r.json();
-
   let html = '<div class="cat-grid">';
   d.categories.forEach(c => {
     html += '<div class="cat-card" onclick="kiesCategorie(\'' + c.strCategory + '\')">'
@@ -22,12 +38,10 @@ async function kiesCategorie(cat) {
   document.getElementById('inhoud').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
   const r = await fetch(API + 'filter.php?c=' + encodeURIComponent(cat));
   const d = await r.json();
-
   if (!d.meals) {
     document.getElementById('inhoud').innerHTML = '<p style="text-align:center;color:#5a7a5a;padding:28px">Geen recepten gevonden.</p>';
     return;
   }
-
   let html = '<div class="results">'
     + '<div class="results-header">'
     + '<div class="back-btn" onclick="laadCategorieën()"><i class="ti ti-arrow-left"></i> Terug</div>'
@@ -35,9 +49,15 @@ async function kiesCategorie(cat) {
     + '</div><div class="meal-grid">';
 
   d.meals.forEach(m => {
+    // ✅ hartje toegevoegd
     html += '<div class="meal-card" onclick="laadDetail(\'' + m.idMeal + '\',\'' + cat + '\')">'
       + '<img src="' + m.strMealThumb + '/preview" alt="' + m.strMeal + '" loading="lazy">'
-      + '<div class="meal-card-body"><div class="meal-name">' + m.strMeal + '</div></div></div>';
+      + '<div class="meal-card-body">'
+      + '<div class="meal-name">' + m.strMeal + '</div>'
+      + '<button class="fav-btn" id="fav-' + m.idMeal + '" onclick="toggleFavoriet(\'' + m.idMeal + '\',\'' + m.strMeal.replace(/'/g, "\\'") + '\',\'' + m.strMealThumb + '\',event)">'
+      + (isFavoriet(m.idMeal) ? '❤️' : '🤍')
+      + '</button>'
+      + '</div></div>';
   });
 
   html += '</div></div>';
@@ -49,13 +69,11 @@ async function laadDetail(id, cat) {
   const r = await fetch(API + 'lookup.php?i=' + id);
   const d = await r.json();
   const m = d.meals[0];
-
   const ingr = [];
   for (let i = 1; i <= 20; i++) {
     if (m['strIngredient' + i] && m['strIngredient' + i].trim())
       ingr.push({ naam: m['strIngredient' + i], hoeveelheid: m['strMeasure' + i] || '' });
   }
-
   document.getElementById('inhoud').innerHTML = '<div class="results"><div class="detail-card">'
     + '<div class="back-btn" onclick="kiesCategorie(\'' + (cat || m.strCategory) + '\')" style="margin-bottom:16px"><i class="ti ti-arrow-left"></i> Terug</div>'
     + '<img src="' + m.strMealThumb + '" alt="' + m.strMeal + '">'
@@ -74,5 +92,6 @@ async function laadDetail(id, cat) {
 window.kiesCategorie = kiesCategorie;
 window.laadDetail = laadDetail;
 window.laadCategorieën = laadCategorieën;
+window.toggleFavoriet = toggleFavoriet;
 
 laadCategorieën();
