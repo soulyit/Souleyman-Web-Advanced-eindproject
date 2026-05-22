@@ -5,7 +5,7 @@ function isFavoriet(id) {
   return favorieten.some(f => f.id === id);
 }
 
-function toggleFavoriet(id, naam, thumb, event) {
+function toggleFavorietCategories(id, naam, thumb, event) {
   event.stopPropagation();
   if (isFavoriet(id)) {
     favorieten = favorieten.filter(f => f.id !== id);
@@ -18,7 +18,7 @@ function toggleFavoriet(id, naam, thumb, event) {
 }
 
 async function laadCategorieën() {
-  document.getElementById('inhoud').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
+  document.getElementById('inhoud-categories').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
   const r = await fetch(API + 'categories.php');
   const d = await r.json();
   let html = '<div class="cat-grid">';
@@ -31,15 +31,15 @@ async function laadCategorieën() {
       + '</div></div>';
   });
   html += '</div>';
-  document.getElementById('inhoud').innerHTML = html;
+  document.getElementById('inhoud-categories').innerHTML = html;
 }
 
 async function kiesCategorie(cat) {
-  document.getElementById('inhoud').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
+  document.getElementById('inhoud-categories').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
   const r = await fetch(API + 'filter.php?c=' + encodeURIComponent(cat));
   const d = await r.json();
   if (!d.meals) {
-    document.getElementById('inhoud').innerHTML = '<p style="text-align:center;color:#5a7a5a;padding:28px">Geen recepten gevonden.</p>';
+    document.getElementById('inhoud-categories').innerHTML = '<p style="text-align:center;color:#5a7a5a;padding:28px">Geen recepten gevonden.</p>';
     return;
   }
   let html = '<div class="results">'
@@ -50,22 +50,22 @@ async function kiesCategorie(cat) {
 
   d.meals.forEach(m => {
     // ✅ hartje toegevoegd
-    html += '<div class="meal-card" onclick="laadDetail(\'' + m.idMeal + '\',\'' + cat + '\')">'
+    html += '<div class="meal-card" onclick="laadDetailCategories(\'' + m.idMeal + '\',\'' + cat + '\')">'
       + '<img src="' + m.strMealThumb + '/preview" alt="' + m.strMeal + '" loading="lazy">'
       + '<div class="meal-card-body">'
       + '<div class="meal-name">' + m.strMeal + '</div>'
-      + '<button class="fav-btn" id="fav-' + m.idMeal + '" onclick="toggleFavoriet(\'' + m.idMeal + '\',\'' + m.strMeal.replace(/'/g, "\\'") + '\',\'' + m.strMealThumb + '\',event)">'
+      + '<button class="fav-btn" id="fav-' + m.idMeal + '" onclick="toggleFavorietCategories(\'' + m.idMeal + '\',\'' + m.strMeal.replace(/'/g, "\\'") + '\',\'' + m.strMealThumb + '\',event)">'
       + (isFavoriet(m.idMeal) ? '❤️' : '🤍')
       + '</button>'
       + '</div></div>';
   });
 
   html += '</div></div>';
-  document.getElementById('inhoud').innerHTML = html;
+  document.getElementById('inhoud-categories').innerHTML = html;
 }
 
-async function laadDetail(id, cat) {
-  document.getElementById('inhoud').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
+async function laadDetailCategories(id, cat) {
+  document.getElementById('inhoud-categories').innerHTML = '<div class="loader"><div class="spin"></div> Laden...</div>';
   const r = await fetch(API + 'lookup.php?i=' + id);
   const d = await r.json();
   const m = d.meals[0];
@@ -74,7 +74,7 @@ async function laadDetail(id, cat) {
     if (m['strIngredient' + i] && m['strIngredient' + i].trim())
       ingr.push({ naam: m['strIngredient' + i], hoeveelheid: m['strMeasure' + i] || '' });
   }
-  document.getElementById('inhoud').innerHTML = '<div class="results"><div class="detail-card">'
+  document.getElementById('inhoud-categories').innerHTML = '<div class="results"><div class="detail-card">'
     + '<div class="back-btn" onclick="kiesCategorie(\'' + (cat || m.strCategory) + '\')" style="margin-bottom:16px"><i class="ti ti-arrow-left"></i> Terug</div>'
     + '<img src="' + m.strMealThumb + '" alt="' + m.strMeal + '">'
     + '<h2>' + m.strMeal + '</h2>'
@@ -90,8 +90,8 @@ async function laadDetail(id, cat) {
 }
 
 window.kiesCategorie = kiesCategorie;
-window.laadDetail = laadDetail;
+window.laadDetailCategories = laadDetailCategories;
 window.laadCategorieën = laadCategorieën;
-window.toggleFavoriet = toggleFavoriet;
+window.toggleFavorietCategories = toggleFavorietCategories;
 
 laadCategorieën();

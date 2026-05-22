@@ -13,12 +13,12 @@
   <!-- HOME -->
   <div id="page-home">
     <nav class="navbar">
-      <div class="logo">Home -FoodMax</div>
+      <div class="logo">FoodMax</div>
       <ul class="nav-links">
-        <li><a href="home.html" class="nav-link active">Home</a></li>
-        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
-        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
-        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+        <li><a href="#" class="nav-link active" onclick="toonPagina('home')">Home</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('categories')">Categorieën</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('gebieden')">Gebieden</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('favorites')">Favorieten</a></li>
       </ul>
       <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
         <i class="ti ti-search"></i>
@@ -56,16 +56,15 @@
     </footer>
   </div>
 
-
   <!-- CATEGORIES -->
   <div id="page-categories" style="display:none">
     <nav class="navbar">
-      <div class="logo">Categorieën -FoodMax</div>
+      <div class="logo">FoodMax</div>
       <ul class="nav-links">
-        <li><a href="home.html" class="nav-link">Home</a></li>
-        <li><a href="categories.html" class="nav-link active">Categorieën</a></li>
-        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
-        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('home')">Home</a></li>
+        <li><a href="#" class="nav-link active" onclick="toonPagina('categories')">Categorieën</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('gebieden')">Gebieden</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('favorites')">Favorieten</a></li>
       </ul>
       <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
         <i class="ti ti-search"></i>
@@ -87,12 +86,12 @@
   <!-- GEBIEDEN -->
   <div id="page-gebieden" style="display:none">
     <nav class="navbar">
-      <div class="logo">Gebieden -FoodMax</div>
+      <div class="logo">FoodMax</div>
       <ul class="nav-links">
-        <li><a href="home.html" class="nav-link">Home</a></li>
-        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
-        <li><a href="gebieden.html" class="nav-link active">Gebieden</a></li>
-        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('home')">Home</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('categories')">Categorieën</a></li>
+        <li><a href="#" class="nav-link active" onclick="toonPagina('gebieden')">Gebieden</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('favorites')">Favorieten</a></li>
       </ul>
       <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
         <i class="ti ti-search"></i>
@@ -100,12 +99,11 @@
       </form>
     </nav>
     <div class="page-header">
-      <h1 class="page-title">Koken per gebied</h1>
-      <p class="page-sub">Kies een land en ontdek de recepten.</p>
+      <h1 class="page-title">Gebieden</h1>
+      <p class="page-sub">Kies een gebied en ontdek de recepten.</p>
     </div>
-    <div class="area-buttons" id="area-buttons"></div>
-    <div class="results" id="results">
-      <p class="placeholder">Kies een gebied hierboven.</p>
+    <div id="inhoud-gebieden">
+      <div class="loader"><div class="spin"></div> Gebieden laden...</div>
     </div>
     <footer class="footer">
       <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
@@ -115,12 +113,12 @@
   <!-- FAVORITES -->
   <div id="page-favorites" style="display:none">
     <nav class="navbar">
-      <div class="logo">Favorites -FoodMax</div>
+      <div class="logo">FoodMax</div>
       <ul class="nav-links">
-        <li><a href="home.html" class="nav-link">Home</a></li>
-        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
-        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
-        <li><a href="favorites.html" class="nav-link active">Favorieten</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('home')">Home</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('categories')">Categorieën</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('gebieden')">Gebieden</a></li>
+        <li><a href="#" class="nav-link active" onclick="toonPagina('favorites')">Favorieten</a></li>
       </ul>
       <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
         <i class="ti ti-search"></i>
@@ -131,7 +129,7 @@
       <h1 class="page-title">Favorieten</h1>
       <p class="page-sub">Klik op ❤️ bij een gerecht om het op te slaan.</p>
     </div>
-    <div id="inhoud">
+    <div id="inhoud-favorites">
       <div class="loader"><div class="spin"></div> Laden...</div>
     </div>
     <footer class="footer">
@@ -144,10 +142,10 @@
     <nav class="navbar">
       <div class="logo">FoodMax</div>
       <ul class="nav-links">
-        <li><a href="home.html" class="nav-link">Home</a></li>
-        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
-        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
-        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('home')">Home</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('categories')">Categorieën</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('gebieden')">Gebieden</a></li>
+        <li><a href="#" class="nav-link" onclick="toonPagina('favorites')">Favorieten</a></li>
       </ul>
       <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
         <i class="ti ti-search"></i>
@@ -175,11 +173,10 @@
 
   <div id="toast" class="toast"></div>
 
-  <script src="categories.js"></script>
-  <script src="gebieden.js"></script>
-  <script src="favorites.js"></script>
-  <script src="search.js"></script>
-  <script src="app.js"></script>
-
+  <script type="module" src="categories.mjs"></script>
+  <script type="module" src="gebieden.mjs"></script>
+  <script type="module" src="favorites.mjs"></script>
+  <script type="module" src="search.mjs"></script>
+  <script type="module" src="nav.js"></script>
 </body>
 </html>

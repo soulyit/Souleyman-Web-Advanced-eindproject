@@ -18,8 +18,10 @@ function toggleFavoriet(id, naam, thumb, event) {
 }
 
 async function laadGebieden() {
+  document.getElementById('inhoud-gebieden').innerHTML = '<div class="loader"><div class="spin"></div> Gebieden laden...</div>';
   const r = await fetch(API + 'list.php?a=list');
   const d = await r.json();
+  document.getElementById('inhoud-gebieden').innerHTML = '<div class="area-buttons" id="area-buttons"></div><div class="results" id="results"><p class="placeholder">Kies een gebied hierboven.</p></div>';
   const container = document.getElementById('area-buttons');
   const checks = d.meals.map(a =>
     fetch(API + 'filter.php?a=' + encodeURIComponent(a.strArea))
@@ -92,6 +94,7 @@ async function laadDetail(id) {
 
 window.kiesGebied = kiesGebied;
 window.laadDetail = laadDetail;
+window.laadGebieden = laadGebieden;
 window.toggleFavoriet = toggleFavoriet;
 
 laadGebieden();

@@ -43,7 +43,7 @@ function toonToast(tekst) {
 }
 
 function laadFavorieten() {
-  const inhoud = document.getElementById('inhoud');
+  const inhoud = document.getElementById('inhoud-favorites');
 
   if (!favorieten.length) {
     inhoud.innerHTML = '<div class="leeg">Je hebt nog geen favorieten.<br>Like een gerecht via Categorieën of Gebieden.</div>';
@@ -69,4 +69,5 @@ function laadFavorieten() {
 }
 
 window.toggleFavoriet = toggleFavoriet;
+window.laadFavorieten = laadFavorieten;
 laadFavorieten();

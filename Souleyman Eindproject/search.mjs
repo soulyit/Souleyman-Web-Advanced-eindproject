@@ -66,7 +66,7 @@ async function initialisatie() {
     await voerZoekopdrachtUit(q);
   } else {
     document.getElementById('search-subtitle').textContent = 'Zoek naar jouw favoriete recepten.';
-    document.getElementById('inhoud').innerHTML = `
+    document.getElementById('inhoud-search').innerHTML = `
       <div class="placeholder-text">
         <p>Voer hierboven of in de navigatiebalk een zoekterm in om recepten te zoeken.</p>
       </div>
@@ -76,7 +76,7 @@ async function initialisatie() {
 
 // Voer de API zoekopdracht uit
 async function voerZoekopdrachtUit(query) {
-  const inhoud = document.getElementById('inhoud');
+  const inhoud = document.getElementById('inhoud-search');
   inhoud.innerHTML = '<div class="loader"><div class="spin"></div> Zoeken naar recepten...</div>';
   
   try {
@@ -107,7 +107,7 @@ async function voerZoekopdrachtUit(query) {
 
 // Toon resultaten in grid layout
 function toonResultatenGrid() {
-  const inhoud = document.getElementById('inhoud');
+  const inhoud = document.getElementById('inhoud-search');
   
   let html = '<div class="results">'
     + '<div class="results-header">'
@@ -131,7 +131,7 @@ function toonResultatenGrid() {
 
 // Laad recept detail
 async function laadDetail(id) {
-  const inhoud = document.getElementById('inhoud');
+  const inhoud = document.getElementById('inhoud-search');
   inhoud.innerHTML = '<div class="loader"><div class="spin"></div> Recept details laden...</div>';
   
   try {
@@ -217,6 +217,7 @@ function terugNaarResultaten() {
 window.toggleFavoriet = toggleFavoriet;
 window.laadDetail = laadDetail;
 window.terugNaarResultaten = terugNaarResultaten;
+window.voerZoekopdrachtUit = voerZoekopdrachtUit;
 
 // Start de pagina initialisatie
 initialisatie();
