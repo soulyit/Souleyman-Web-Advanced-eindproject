@@ -2,10 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search -FoodMax</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 <body>
     
+    <nav class="navbar">
+      <div class="logo">FoodMax</div>
+
+      <ul class="nav-links">
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
+        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
+        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+      </ul>
+
+      <form class="search-wrap" action="search.html" method="get">
+        <i class="ti ti-search"></i>
+        <input type="text" name="q" placeholder="Zoek recept...">
+      </form>
+    </nav>
+
+    <div class="page-header">
+      <h1 class="page-title">Zoeken</h1>
+      <p class="page-sub" id="search-subtitle">Zoek naar jouw favoriete recepten.</p>
+      
+      <form class="search-page-form" action="search.html" method="get">
+        <div class="search-box">
+          <i class="ti ti-search"></i>
+          <input type="text" name="q" id="search-input" placeholder="Zoek een recept... bijv. pasta" required>
+          <button type="submit">Zoeken</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="inhoud">
+      <div class="loader"><div class="spin"></div> Laden...</div>
+    </div>
+
+    <footer class="footer">
+      <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
+    </footer>
+
+    <div id="toast" class="toast"></div>
+    <div id="app"></div>
+
+    <script type="module" src="search.mjs"></script>
 </body>
 </html>
