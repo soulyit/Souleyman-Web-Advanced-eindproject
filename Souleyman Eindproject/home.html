@@ -1,86 +1,185 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home -FoodMax</title>
-    <link rel="stylesheet" href="home.css">
-  </head>
-  <body>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodMax</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-     <nav class="navbar">
-    <div class="logo">FoodMax</div>
-
-    <ul class="nav-links">
-      <li><a href="home.html" class="nav-link active">Home</a></li>
-      <li><a href="categories.html" class="nav-link">Categorieën</a></li>
-      <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
-      <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
-    </ul>
-
-    <form class="search-wrap" action="search.html" method="get">
-      <i class="ti ti-search"></i>
-      <input type="text" name="q" placeholder="Zoek recept...">
-    </form>
-  </nav>
-
-
-  <section class="hero">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <h1 class="hero-title">Wat ga je vandaag koken?</h1>
-    <p class="hero-sub">Ontdek duizenden recepten van over de hele wereld.</p>
-    <form class="hero-search" action="search.html" method="get">
-      <i class="ti ti-search"></i>
-      <input type="text" name="q" placeholder="Zoek een recept... bijv. pasta">
-      <button type="submit">Zoeken</button>
-    </form>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-  </section>
-
-
-  <section class="section">
-    <h2 class="section-title">Waarom FoodMax?</h2>
-    <div class="info-grid">
-      <div class="info-card">
-        <h3>Wereldse recepten</h3>
-        <p>Recepten uit meer dan 20 verschillende landen en keukens.</p>
+  <!-- HOME -->
+  <div id="page-home">
+    <nav class="navbar">
+      <div class="logo">Home -FoodMax</div>
+      <ul class="nav-links">
+        <li><a href="home.html" class="nav-link active">Home</a></li>
+        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
+        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
+        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+      </ul>
+      <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Zoek recept...">
+      </form>
+    </nav>
+    <section class="hero">
+      <h1 class="hero-title">Wat ga je vandaag koken?</h1>
+      <p class="hero-sub">Ontdek duizenden recepten van over de hele wereld.</p>
+      <form class="hero-search" onsubmit="zoekVanNavbar(event)">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Zoek een recept... bijv. pasta">
+        <button type="submit">Zoeken</button>
+      </form>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Waarom FoodMax?</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Wereldse recepten</h3>
+          <p>Recepten uit meer dan 20 verschillende landen en keukens.</p>
+        </div>
+        <div class="info-card">
+          <h3>Duidelijke ingrediënten</h3>
+          <p>Elk recept heeft een overzichtelijke lijst met ingrediënten en hoeveelheden.</p>
+        </div>
+        <div class="info-card">
+          <h3>Video instructies</h3>
+          <p>Veel recepten hebben een YouTube-video zodat je het stap voor stap kan volgen.</p>
+        </div>
       </div>
-      <div class="info-card">
-        <h3>Duidelijke ingrediënten</h3>
-        <p>Elk recept heeft een overzichtelijke lijst met ingrediënten en hoeveelheden.</p>
-      </div>
-      <div class="info-card">
-        <h3>Video instructies</h3>
-        <p>Veel recepten hebben een YouTube-video zodat je het stap voor stap kan volgen.</p>
-      </div>
+    </section>
+    <footer class="footer">
+      <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
+    </footer>
+  </div>
+
+
+  <!-- CATEGORIES -->
+  <div id="page-categories" style="display:none">
+    <nav class="navbar">
+      <div class="logo">Categorieën -FoodMax</div>
+      <ul class="nav-links">
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="categories.html" class="nav-link active">Categorieën</a></li>
+        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
+        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+      </ul>
+      <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Zoek recept...">
+      </form>
+    </nav>
+    <div class="page-header">
+      <h1 class="page-title">Categorieën</h1>
+      <p class="page-sub">Kies een categorie en ontdek de recepten.</p>
     </div>
-  </section>
+    <div id="inhoud-categories">
+      <div class="loader"><div class="spin"></div> Categorieën laden...</div>
+    </div>
+    <footer class="footer">
+      <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
+    </footer>
+  </div>
 
-  <footer class="footer">
-    <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
-  </footer>
+  <!-- GEBIEDEN -->
+  <div id="page-gebieden" style="display:none">
+    <nav class="navbar">
+      <div class="logo">Gebieden -FoodMax</div>
+      <ul class="nav-links">
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
+        <li><a href="gebieden.html" class="nav-link active">Gebieden</a></li>
+        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+      </ul>
+      <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Zoek recept...">
+      </form>
+    </nav>
+    <div class="page-header">
+      <h1 class="page-title">Koken per gebied</h1>
+      <p class="page-sub">Kies een land en ontdek de recepten.</p>
+    </div>
+    <div class="area-buttons" id="area-buttons"></div>
+    <div class="results" id="results">
+      <p class="placeholder">Kies een gebied hierboven.</p>
+    </div>
+    <footer class="footer">
+      <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
+    </footer>
+  </div>
 
+  <!-- FAVORITES -->
+  <div id="page-favorites" style="display:none">
+    <nav class="navbar">
+      <div class="logo">Favorites -FoodMax</div>
+      <ul class="nav-links">
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
+        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
+        <li><a href="favorites.html" class="nav-link active">Favorieten</a></li>
+      </ul>
+      <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Zoek recept...">
+      </form>
+    </nav>
+    <div class="page-header">
+      <h1 class="page-title">Favorieten</h1>
+      <p class="page-sub">Klik op ❤️ bij een gerecht om het op te slaan.</p>
+    </div>
+    <div id="inhoud">
+      <div class="loader"><div class="spin"></div> Laden...</div>
+    </div>
+    <footer class="footer">
+      <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
+    </footer>
+  </div>
 
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  <!-- SEARCH -->
+  <div id="page-search" style="display:none">
+    <nav class="navbar">
+      <div class="logo">FoodMax</div>
+      <ul class="nav-links">
+        <li><a href="home.html" class="nav-link">Home</a></li>
+        <li><a href="categories.html" class="nav-link">Categorieën</a></li>
+        <li><a href="gebieden.html" class="nav-link">Gebieden</a></li>
+        <li><a href="favorites.html" class="nav-link">Favorieten</a></li>
+      </ul>
+      <form class="search-wrap" onsubmit="zoekVanNavbar(event)">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Zoek recept...">
+      </form>
+    </nav>
+    <div class="page-header">
+      <h1 class="page-title">Zoeken</h1>
+      <p class="page-sub" id="search-subtitle">Zoek naar jouw favoriete recepten.</p>
+      <form class="search-page-form" onsubmit="zoekVanPagina(event)">
+        <div class="search-box">
+          <i class="ti ti-search"></i>
+          <input type="text" id="search-input" placeholder="Zoek een recept... bijv. pasta">
+          <button type="submit">Zoeken</button>
+        </div>
+      </form>
+    </div>
+    <div id="inhoud-search">
+      <div class="loader"><div class="spin"></div> Laden...</div>
+    </div>
+    <footer class="footer">
+      <p>Gemaakt met de <a href="https://www.themealdb.com" target="_blank">TheMealDB API</a></p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="categories.js"></script>
+  <script src="gebieden.js"></script>
+  <script src="favorites.js"></script>
+  <script src="search.js"></script>
+  <script src="app.js"></script>
+
+</body>
 </html>
