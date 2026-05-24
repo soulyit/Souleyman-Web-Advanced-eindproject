@@ -1,5 +1,3 @@
-const API = 'https://www.themealdb.com/api/json/v1/1/';
-let favorieten = JSON.parse(localStorage.getItem('foodmax_favorieten') || '[]');
 
 function slaOp() {
   localStorage.setItem('foodmax_favorieten', JSON.stringify(favorieten));
@@ -70,4 +68,3 @@ function laadFavorieten() {
 
 window.toggleFavoriet = toggleFavoriet;
 window.laadFavorieten = laadFavorieten;
-laadFavorieten();

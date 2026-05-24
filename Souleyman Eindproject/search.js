@@ -1,5 +1,4 @@
-const API = 'https://www.themealdb.com/api/json/v1/1/';
-let favorieten = JSON.parse(localStorage.getItem('foodmax_favorieten') || '[]');
+
 let huidigeResultaten = [];
 let actieveZoekopdracht = '';
 
@@ -219,5 +218,4 @@ window.laadDetail = laadDetail;
 window.terugNaarResultaten = terugNaarResultaten;
 window.voerZoekopdrachtUit = voerZoekopdrachtUit;
 
-// Start de pagina initialisatie
-initialisatie();
+

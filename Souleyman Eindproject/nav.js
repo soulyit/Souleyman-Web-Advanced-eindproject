@@ -1,40 +1,43 @@
-let gebiedenGeladen = false;
-let categoriesGeladen = false;
+    const API = 'https://www.themealdb.com/api/json/v1/1/';
 
-function toonPagina(pagina) {
-  ['home', 'categories', 'gebieden', 'favorites', 'search'].forEach(p => {
-    document.getElementById('page-' + p).style.display = 'none';
-  });
-  document.getElementById('page-' + pagina).style.display = 'block';
+    let favorieten = JSON.parse(localStorage.getItem('foodmax_favorieten') || '[]');
+    let gebiedenGeladen = false;
+    let categoriesGeladen = false;
 
-  if (pagina === 'categories' && !categoriesGeladen) {
-    laadCategorieën();
-    categoriesGeladen = true;
-  }
-  if (pagina === 'gebieden' && !gebiedenGeladen) {
-    laadGebieden();
-    gebiedenGeladen = true;
-  }
-  if (pagina === 'favorites') {
-    laadFavorieten();
-  }
-}
+    function toonPagina(pagina) {
+    ['home', 'categories', 'gebieden', 'favorites', 'search'].forEach(p => {
+        document.getElementById('page-' + p).style.display = 'none';
+    });
+    document.getElementById('page-' + pagina).style.display = 'block';
 
-function zoekVanNavbar(event) {
-  event.preventDefault();
-  const q = event.target.querySelector('input').value.trim();
-  if (!q) return;
-  toonPagina('search');
-  document.getElementById('search-input').value = q;
-  voerZoekopdrachtUit(q);
-}
+    if (pagina === 'categories' && !categoriesGeladen) {
+        laadCategorieën();
+        categoriesGeladen = true;
+    }
+    if (pagina === 'gebieden' && !gebiedenGeladen) {
+        laadGebieden();
+        gebiedenGeladen = true;
+    }
+    if (pagina === 'favorites') {
+        laadFavorieten();
+    }
+    }
 
-function zoekVanPagina(event) {
-  event.preventDefault();
-  const q = document.getElementById('search-input').value.trim();
-  if (q) voerZoekopdrachtUit(q);
-}
+    function zoekVanNavbar(event) {
+    event.preventDefault();
+    const q = event.target.querySelector('input').value.trim();
+    if (!q) return;
+    toonPagina('search');
+    document.getElementById('search-input').value = q;
+    voerZoekopdrachtUit(q);
+    }
 
-window.toonPagina = toonPagina;
-window.zoekVanNavbar = zoekVanNavbar;
-window.zoekVanPagina = zoekVanPagina;
+    function zoekVanPagina(event) {
+    event.preventDefault();
+    const q = document.getElementById('search-input').value.trim();
+    if (q) voerZoekopdrachtUit(q);
+    }
+
+    window.toonPagina = toonPagina;
+    window.zoekVanNavbar = zoekVanNavbar;
+    window.zoekVanPagina = zoekVanPagina;

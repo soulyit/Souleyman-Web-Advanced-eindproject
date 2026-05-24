@@ -1,6 +1,3 @@
-const API = 'https://www.themealdb.com/api/json/v1/1/';
-let favorieten = JSON.parse(localStorage.getItem('foodmax_favorieten') || '[]');
-
 function isFavoriet(id) {
   return favorieten.some(f => f.id === id);
 }
@@ -94,4 +91,4 @@ window.laadDetailCategories = laadDetailCategories;
 window.laadCategorieën = laadCategorieën;
 window.toggleFavorietCategories = toggleFavorietCategories;
 
-laadCategorieën();
+
